@@ -60,7 +60,7 @@ Before running the application, ensure you have the following installed:
 
 ## 🧠 Conversation Memory
 
-To maintain context across interactions, ChatController in this this project utilizes `ChatMemoryAdvisor`. By implementing a `MessageWindowChatMemory` bean, the application manages the conversation history efficiently using a sliding window approach:
+To maintain context across interactions, ChatController in this project utilizes `ChatMemoryAdvisor`. By implementing a `MessageWindowChatMemory` bean, the application manages the conversation history efficiently using a sliding window approach:
 
 ```java
 @Bean
