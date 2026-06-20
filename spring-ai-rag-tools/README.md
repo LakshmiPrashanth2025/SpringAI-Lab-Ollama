@@ -58,4 +58,15 @@ Before running the application, ensure you have the following installed:
 4.  **Retrieval**: When a user asks a question, the system searches the vector store for the most relevant document chunks.
 5.  **Generation**: The retrieved context + the user's question are sent to the LLM (via Ollama) to generate a natural language response.
 
+## 🧠 Conversation Memory
 
+To maintain context across interactions, this project utilizes `ChatMemoryAdvisor`. By implementing a `MessageWindowChatMemory` bean, the application manages the conversation history efficiently using a sliding window approach:
+
+```java
+@Bean
+public ChatMemory chatMemory(JdbcChatMemoryRepository chatMemoryRepository) {
+    return MessageWindowChatMemory.builder()
+            .chatMemoryRepository(chatMemoryRepository)
+            .maxMessages(10)
+            .build();
+}
