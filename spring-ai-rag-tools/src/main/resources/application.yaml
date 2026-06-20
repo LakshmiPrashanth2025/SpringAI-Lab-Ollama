@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: learn-spring-ai
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: qwen3:30b
+    openai:
+      api-key: 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
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.9
+      embedding:
+        options:
+          model: text-embedding-3-small
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+            table-name: chat_memory
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/pgvector-test
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+logging:
+  level:
+    org.springframework.ai:
+      chat.client: DEBUG
